@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project will be designed for educational perposes to better understand the setup and communication of react and redux. YoutubeData API will be the main focus. 
 
 ## Available Scripts
 

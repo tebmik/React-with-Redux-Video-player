@@ -3,21 +3,28 @@ import Item from "./Item";
 
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
-    padding-right: 2rem;
+const Nav = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`
+const Ul = styled.ul`
+    display: flex;
+    flex-direction: ${props => (props.mobile ? "column" : "row")};
+    align-items: center;
+    height: 100%;
+    
 `
 
-const NavItems = () => {
+const NavItems = ({ mobile, clicked }) => {
     return (
         <>
-            <Wrapper>
-                <Item title="item 1" />
-                <Item title="item 2" />
-                <Item title="item 3" />
-            </Wrapper>
+            <Nav mobile={mobile}>
+                <Ul mobile={mobile}>
+                    <Item clicked={clicked} mobile={mobile} title="item 1" />
+                    <Item clicked={clicked} mobile={mobile} title="item 2" />
+                    <Item clicked={clicked} mobile={mobile} title="item 3" />
+                </Ul>
+            </Nav>
         </>
     );
 };

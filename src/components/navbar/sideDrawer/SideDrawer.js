@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Logo from "../logo/Logo";
-import Navitems from "../navItems/NavItems";
+import NavItems from "../navItems/NavItems";
 import Hamburger from "./hamburger/Hamburger";
 
 const FixedWrapper = styled.div`
@@ -28,6 +28,26 @@ const Wrapper = styled.div`
     align-content: center;
 `;
 
+const Menu = styled.div`
+    position: fixed;
+    width: 70%;
+    left:0;
+    top:0;
+    display: flex;
+    padding-left: 2rem;
+    align-items: center;
+    margin-top: 8rem;
+    height: 100vh;
+    background-color: var(--color-main);
+    transform: translateX(${props => (props.opened ? "0%" : "-100%")});
+    transition: all 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+    display: none;
+
+    @media ${props => props.theme.mediaQueries.small} {
+        display: flex;
+    }
+`
+
 
 
 const SideDrawer = () => {
@@ -42,6 +62,9 @@ const SideDrawer = () => {
                     <Hamburger opened={isOpened} clicked={() => setIsOpened(!isOpened)} />
                 </Wrapper>
             </FixedWrapper>
+            <Menu opened={isOpened}>
+                <NavItems mobile clicked={() => setIsOpened(false)} />
+            </Menu>
         </>
     );
 };

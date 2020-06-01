@@ -6,12 +6,13 @@ import NavItems from "./navItems/NavItems";
 
 const FixedWrapper = styled.div`
     position: fixed;
-    background-color: var(--color-mainDark);
+    background-color: transparent;
     padding: 0 2rem;
     top: 0;
     left:0;
     width: 100%;
     height: 8rem;
+    z-index: 10;
 
     @media ${props => props.theme.mediaQueries.small} {
         display: none;

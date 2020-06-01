@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-import { connect } from "react-redux";
-import { fetchMedia } from "../../../actions";
+import VideoPlayer from "./videoPlayer/VideoPlayer";
+import VideoList from "./videoList/VideoList";
 
 const Wrapper = styled.div`
     height: 100vh;
@@ -10,23 +10,18 @@ const Wrapper = styled.div`
     background-color: var(--color-mainLight);
 `
 
-const FeaturedContent = ({ mobile, media, fetchMedia }) => {
-
-    useEffect(() => {
-        fetchMedia();
-    }, []);
-
-    console.log(media)
+const FeaturedContent = ({ mobile }) => {
 
     return (
         <>
-            <Wrapper mobile={mobile} >Featured Content</Wrapper>
+            <Wrapper mobile={mobile}>
+                <VideoPlayer />
+            </Wrapper>
+            <VideoList />
         </>
     );
 };
 
-const mapStateToProps = state => ({
-    media: state.media
-}); 
 
-export default connect(mapStateToProps, { fetchMedia })(FeaturedContent);
+
+export default FeaturedContent;
